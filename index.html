@@ -210,6 +210,51 @@
             border: 1px solid #ccc;
         }
 
+        /* Category dropdown styles */
+        .category-header {
+            background: linear-gradient(135deg, #4a5d8a 0%, #5a4a72 100%);
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 0 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: linear-gradient(135deg, #5a6d9a 0%, #6a5a82 100%);
+            transform: translateY(-1px);
+        }
+
+        .category-header.collapsed .category-icon {
+            transform: rotate(-90deg);
+        }
+
+        .category-icon {
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+        }
+
+        .category-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category-content.collapsed {
+            max-height: 0;
+        }
+
+        .category-content .molecule-item {
+            margin-left: 15px;
+            margin-right: 5px;
+        }
+
         @media (max-width: 1200px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -221,21 +266,214 @@
                 height: 60vh;
             }
         }
+        
+        /* AI Chat Styles */
+        .ai-section {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .chat-input-container input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Chatbot Popup Styles */
+        .chatbot-popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .chatbot-popup-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            max-height: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-popup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-popup-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-popup {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-popup:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatbot-popup-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .popup-ai-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .popup-ai-controls .control-button {
+            font-size: 0.9em;
+            padding: 8px 16px;
+        }
+
+        .popup-chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .popup-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            min-height: 200px;
+        }
+
+        .popup-chat-input-container {
+            position: relative;
+            margin-top: auto;
+        }
+
+        .popup-chat-input-container input {
+            width: 100%;
+            padding: 12px 50px 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .popup-chat-input-container input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .popup-send-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .popup-send-button:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .expand-chat-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .expand-chat-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: white;
+            border-left: 4px solid #667eea;
+        }
+
+        .chat-message-question {
+            font-weight: bold;
+            color: #4a5d8a;
+            margin-bottom: 8px;
+        }
+
+        .chat-message-answer {
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🧪 MolecuViz</h1>
-            <p class="subtitle">Interactive 3D Molecular Visualization Tool for Chemistry Students</p>
+            <p class="subtitle">Interactive 3D Molecular Visualization Tool for Chemistry Students created by Partho Biswas</p>
         </header>
 
         <div class="main-content">
             <div class="sidebar">
                 <h3>Molecule Library</h3>
-                <ul class="molecule-list" id="moleculeList">
-                    <!-- Molecules will be populated here -->
-                </ul>
+                <div class="molecule-categories" id="moleculeCategories">
+                    <!-- Categories will be populated here -->
+                </div>
                 
                 <div class="controls">
                     <div class="control-group">
@@ -290,440 +528,684 @@
                 <div id="infoContent">
                     <p>Choose a molecule from the library to view its 3D structure and learn about its properties.</p>
                 </div>
+                
+                <!-- AI Chat Section -->
+                <div class="ai-section">
+                    <h4 style="color: #4a5d8a; margin: 20px 0 10px 0; display: flex; align-items: center;">
+                        🤖 AI Assistant
+                        <span id="aiStatus" style="margin-left: 10px; font-size: 0.8em; color: #999;"></span>
+                        <button class="expand-chat-button" onclick="openChatbotPopup()">🔍 Expand Chat</button>
+                    </h4>
+                    
+                    <div class="ai-controls" style="margin-bottom: 15px;">
+                        <button class="control-button" onclick="explainCurrentMolecule()" style="margin-right: 5px; font-size: 0.8em;">Explain Molecule</button>
+                        <button class="control-button" onclick="compareMolecules()" style="margin-right: 5px; font-size: 0.8em;">Compare</button>
+                        <button class="control-button" onclick="predictProperties()" style="font-size: 0.8em;">Predict Properties</button>
+                    </div>
+                    
+                    <!-- PDF Generation Controls -->
+                    <div class="pdf-controls" style="margin-bottom: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <h5 style="color: #4a5d8a; margin: 0 0 10px 0;">📄 PDF Report</h5>
+                        <button class="control-button" onclick="previewPDF()" style="margin-right: 5px; font-size: 0.8em; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">Preview PDF</button>
+                        <button class="control-button" onclick="downloadPDF()" style="font-size: 0.8em; background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);">Download PDF</button>
+                    </div>
+                    
+                    <div class="ai-chat">
+                        <div class="chat-input-container" style="position: relative;">
+                            <input type="text" id="aiQuestionInput" placeholder="Ask AI about molecules..." 
+                                   style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em;" 
+                                   onkeypress="handleEnterKey(event)">
+                            <button onclick="askAI()" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); 
+                                   background: none; border: none; color: #667eea; cursor: pointer; font-size: 1.2em;">▶</button>
+                        </div>
+                        
+                        <div id="aiResponse" style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; 
+                             border-left: 4px solid #667eea; display: none; max-height: 300px; overflow-y: auto;">
+                            <div id="aiResponseContent"></div>
+                            <div style="text-align: right; margin-top: 10px;">
+                                <button onclick="clearAIResponse()" style="background: none; border: none; color: #999; cursor: pointer; font-size: 0.8em;">Clear</button>
+                            </div>
+                        </div>
+                        
+                        <div id="aiLoading" style="display: none; text-align: center; margin-top: 10px; color: #667eea;">
+                            <div style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">🤖 AI is thinking...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Popup Modal -->
+    <div id="chatbotPopup" class="chatbot-popup">
+        <div class="chatbot-popup-content">
+            <div class="chatbot-popup-header">
+                <h3>🤖 AI Chemistry Assistant</h3>
+                <button class="close-popup" onclick="closeChatbotPopup()">&times;</button>
+            </div>
+            <div class="chatbot-popup-body">
+                <div class="popup-ai-controls">
+                    <button class="control-button" onclick="popupExplainCurrentMolecule()">Explain Current Molecule</button>
+                    <button class="control-button" onclick="popupCompareMolecules()">Compare Molecules</button>
+                    <button class="control-button" onclick="popupPredictProperties()">Predict Properties</button>
+                    <button class="control-button" onclick="clearPopupChat()" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">Clear Chat</button>
+                </div>
+                
+                <div class="popup-chat-area">
+                    <div id="popupChatMessages" class="popup-chat-messages">
+                        <div style="text-align: center; color: #999; padding: 20px;">
+                            Welcome to the AI Chemistry Assistant! Ask me anything about molecules, chemistry, or use the quick action buttons above.
+                        </div>
+                    </div>
+                    
+                    <div class="popup-chat-input-container">
+                        <input type="text" id="popupChatInput" placeholder="Ask me anything about chemistry and molecules..." onkeypress="handlePopupEnterKey(event)">
+                        <button class="popup-send-button" onclick="sendPopupMessage()">▶</button>
+                    </div>
+                </div>
+                
+                <div id="popupAiLoading" style="display: none; text-align: center; margin-top: 10px; color: #667eea;">
+                    <div style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">🤖 AI is thinking...</div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
     <script>
-        // Global variables
-        let scene, camera, renderer, controls;
-        let currentMolecule = null;
-        let molecules = [];
-        let displayMode = 'ball-stick';
-        let autoRotate = false;
-        let mouseX = 0, mouseY = 0;
-        let isMouseDown = false;
-        let cameraDistance = 50;
-
-        // Atom colors (CPK coloring)
-        const atomColors = {
-            'H': 0xffffff, // White
-            'C': 0x404040, // Dark gray
-            'N': 0x0000ff, // Blue
-            'O': 0xff0000, // Red
-            'S': 0xffff00, // Yellow
-            'P': 0xffa500, // Orange
-            'F': 0x00ff00, // Green
-            'Cl': 0x00ff00, // Green
-            'Br': 0x8b4513, // Brown
-            'I': 0x9400d3   // Purple
-        };
-
-        // Van der Waals radii
-        const atomRadii = {
-            'H': 1.2, 'C': 1.7, 'N': 1.55, 'O': 1.52, 'S': 1.8, 'P': 1.8,
-            'F': 1.47, 'Cl': 1.75, 'Br': 1.85, 'I': 1.98
-        };
-
-        // Molecule database
-        const moleculeDatabase = [
-            {
-                name: "Water",
-                formula: "H₂O",
-                atoms: [
-                    { element: 'O', position: [0, 0, 0] },
-                    { element: 'H', position: [0.96, 0, 0] },
-                    { element: 'H', position: [-0.24, 0.93, 0] }
-                ],
-                bonds: [[0, 1], [0, 2]],
-                info: {
-                    description: "Water is essential for all known forms of life. It's a polar molecule with unique properties.",
-                    molecularWeight: "18.015 g/mol",
-                    bondAngle: "104.5°",
-                    polarity: "Polar",
-                    uses: "Universal solvent, biological processes, industrial applications"
-                }
-            },
-            {
-                name: "Methane",
-                formula: "CH₄",
-                atoms: [
-                    { element: 'C', position: [0, 0, 0] },
-                    { element: 'H', position: [1.09, 0, 0] },
-                    { element: 'H', position: [-0.36, 1.03, 0] },
-                    { element: 'H', position: [-0.36, -0.51, 0.89] },
-                    { element: 'H', position: [-0.36, -0.51, -0.89] }
-                ],
-                bonds: [[0, 1], [0, 2], [0, 3], [0, 4]],
-                info: {
-                    description: "Methane is the simplest hydrocarbon and main component of natural gas.",
-                    molecularWeight: "16.043 g/mol",
-                    bondAngle: "109.5°",
-                    polarity: "Nonpolar",
-                    uses: "Fuel, heating, chemical feedstock"
-                }
-            },
-            {
-                name: "Ammonia",
-                formula: "NH₃",
-                atoms: [
-                    { element: 'N', position: [0, 0, 0] },
-                    { element: 'H', position: [0.94, 0, 0] },
-                    { element: 'H', position: [-0.47, 0.81, 0] },
-                    { element: 'H', position: [-0.47, -0.81, 0] }
-                ],
-                bonds: [[0, 1], [0, 2], [0, 3]],
-                info: {
-                    description: "Ammonia has a trigonal pyramidal geometry and is a common base.",
-                    molecularWeight: "17.031 g/mol",
-                    bondAngle: "107°",
-                    polarity: "Polar",
-                    uses: "Fertilizer production, cleaning products, refrigeration"
-                }
-            },
-            {
-                name: "Carbon Dioxide",
-                formula: "CO₂",
-                atoms: [
-                    { element: 'C', position: [0, 0, 0] },
-                    { element: 'O', position: [1.16, 0, 0] },
-                    { element: 'O', position: [-1.16, 0, 0] }
-                ],
-                bonds: [[0, 1], [0, 2]],
-                info: {
-                    description: "Carbon dioxide is a linear molecule, important in photosynthesis and respiration.",
-                    molecularWeight: "44.01 g/mol",
-                    bondAngle: "180°",
-                    polarity: "Nonpolar",
-                    uses: "Photosynthesis, carbonation, fire extinguishers"
-                }
-            },
-            {
-                name: "Ethanol",
-                formula: "C₂H₅OH",
-                atoms: [
-                    { element: 'C', position: [0, 0, 0] },
-                    { element: 'C', position: [1.54, 0, 0] },
-                    { element: 'O', position: [2.32, 1.06, 0] },
-                    { element: 'H', position: [3.26, 1.06, 0] },
-                    { element: 'H', position: [-0.36, 1.03, 0] },
-                    { element: 'H', position: [-0.36, -0.51, 0.89] },
-                    { element: 'H', position: [-0.36, -0.51, -0.89] },
-                    { element: 'H', position: [1.9, -0.51, 0.89] },
-                    { element: 'H', position: [1.9, -0.51, -0.89] }
-                ],
-                bonds: [[0, 1], [1, 2], [2, 3], [0, 4], [0, 5], [0, 6], [1, 7], [1, 8]],
-                info: {
-                    description: "Ethanol is a simple alcohol with important industrial and biological significance.",
-                    molecularWeight: "46.068 g/mol",
-                    bondAngle: "Various",
-                    polarity: "Polar",
-                    uses: "Alcoholic beverages, fuel, solvent, disinfectant"
-                }
-            },
-            {
-                name: "Benzene",
-                formula: "C₆H₆",
-                atoms: [
-                    { element: 'C', position: [1.4, 0, 0] },
-                    { element: 'C', position: [0.7, 1.21, 0] },
-                    { element: 'C', position: [-0.7, 1.21, 0] },
-                    { element: 'C', position: [-1.4, 0, 0] },
-                    { element: 'C', position: [-0.7, -1.21, 0] },
-                    { element: 'C', position: [0.7, -1.21, 0] },
-                    { element: 'H', position: [2.48, 0, 0] },
-                    { element: 'H', position: [1.24, 2.15, 0] },
-                    { element: 'H', position: [-1.24, 2.15, 0] },
-                    { element: 'H', position: [-2.48, 0, 0] },
-                    { element: 'H', position: [-1.24, -2.15, 0] },
-                    { element: 'H', position: [1.24, -2.15, 0] }
-                ],
-                bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 6], [1, 7], [2, 8], [3, 9], [4, 10], [5, 11]],
-                info: {
-                    description: "Benzene is the simplest aromatic compound with a ring of six carbon atoms.",
-                    molecularWeight: "78.114 g/mol",
-                    bondAngle: "120°",
-                    polarity: "Nonpolar",
-                    uses: "Chemical industry, plastics, synthetic fibers"
-                }
-            }
-        ];
-
-        // Initialize the application
-        function init() {
-            setupViewer();
-            populateMoleculeList();
-            loadMolecule(0);
-            animate();
-        }
-
-        // Setup Three.js viewer
-        function setupViewer() {
-            const container = document.getElementById('viewer');
-            const loading = document.getElementById('loading');
-            
-            // Scene
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xf0f0f0);
-            
-            // Camera
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(20, 20, 20);
-            camera.lookAt(0, 0, 0);
-            
-            // Renderer
-            renderer = new THREE.WebGLRenderer({ canvas: container, antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-            
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-            scene.add(ambientLight);
-            
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(50, 50, 50);
-            directionalLight.castShadow = true;
-            scene.add(directionalLight);
-            
-            // Mouse controls
-            setupMouseControls();
-            
-            // Handle window resize
-            window.addEventListener('resize', onWindowResize);
-            
-            loading.style.display = 'none';
-        }
-
-        // Setup mouse controls for camera
-        function setupMouseControls() {
-            const canvas = document.getElementById('viewer');
-            
-            canvas.addEventListener('mousedown', (e) => {
-                isMouseDown = true;
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            canvas.addEventListener('mousemove', (e) => {
-                if (isMouseDown) {
-                    const deltaX = e.clientX - mouseX;
-                    const deltaY = e.clientY - mouseY;
+        // Wait for both the DOM and script.js to be ready
+        let isScriptLoaded = false;
+        let isDOMReady = false;
+        
+        function checkAndInitialize() {
+            if (isScriptLoaded && isDOMReady) {
+                // Override the populateMoleculeList function to use categories
+                window.populateMoleculeList = function() {
+                    const categoriesContainer = document.getElementById('moleculeCategories');
+                    if (!categoriesContainer) return; // Safety check
+                    categoriesContainer.innerHTML = '';
                     
-                    // Rotate camera around origin
-                    const spherical = new THREE.Spherical();
-                    spherical.setFromVector3(camera.position);
-                    spherical.theta -= deltaX * 0.01;
-                    spherical.phi += deltaY * 0.01;
-                    spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi));
+                    // Define molecule categories
+                    const categories = {
+                        'Simple Molecules': [0, 1, 2, 3, 4, 5, 6, 7], // Water, Methane, Ammonia, CO2, H2, O2, N2, HCl
+                        'Alcohols': [8, 9], // Ethanol, Methanol
+                        'Aromatics': [10, 11], // Benzene, Toluene
+                        'Alkanes': [12, 13], // Ethane, Propane
+                        'Alkenes': [14], // Ethylene
+                        'Acids': [15, 16], // Acetic Acid, Formic Acid
+                        'Ketones & Aldehydes': [17, 18], // Acetone, Formaldehyde
+                        'Nitrogen Compounds': [19], // Methylamine
+                        'Sulfur Compounds': [20, 21], // H2S, SO2
+                        'Phosphorus Compounds': [22], // Phosphine
+                        'Fluorine Compounds': [23, 24], // HF, CH3F
+                        'Biological Molecules': [25] // Glucose
+                    };
                     
-                    camera.position.setFromSpherical(spherical);
-                    camera.lookAt(0, 0, 0);
-                    
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                }
-            });
-            
-            canvas.addEventListener('mouseup', () => {
-                isMouseDown = false;
-            });
-            
-            canvas.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                cameraDistance += e.deltaY * 0.01;
-                cameraDistance = Math.max(10, Math.min(100, cameraDistance));
+                    Object.entries(categories).forEach(([categoryName, moleculeIndices]) => {
+                        // Create category header
+                        const categoryHeader = document.createElement('div');
+                        categoryHeader.className = 'category-header';
+                        categoryHeader.innerHTML = `
+                            <span>${categoryName}</span>
+                            <span class="category-icon">▼</span>
+                        `;
+                        
+                        // Create category content
+                        const categoryContent = document.createElement('div');
+                        categoryContent.className = 'category-content';
+                        
+                        // Add molecules to category
+                        moleculeIndices.forEach(index => {
+                            if (index < moleculeDatabase.length) {
+                                const molecule = moleculeDatabase[index];
+                                const item = document.createElement('div');
+                                item.className = 'molecule-item';
+                                item.innerHTML = `
+                                    <div class="molecule-name">${molecule.name}</div>
+                                    <div class="molecule-formula">${molecule.formula}</div>
+                                `;
+                                item.addEventListener('click', () => loadMolecule(index));
+                                categoryContent.appendChild(item);
+                            }
+                        });
+                        
+                        // Add click handler for category toggle
+                        categoryHeader.addEventListener('click', () => {
+                            const isCollapsed = categoryContent.classList.contains('collapsed');
+                            categoryContent.classList.toggle('collapsed', !isCollapsed);
+                            categoryHeader.classList.toggle('collapsed', !isCollapsed);
+                        });
+                        
+                        categoriesContainer.appendChild(categoryHeader);
+                        categoriesContainer.appendChild(categoryContent);
+                    });
+                };
                 
-                const direction = new THREE.Vector3();
-                camera.getWorldDirection(direction);
-                direction.normalize().multiplyScalar(-cameraDistance);
-                camera.position.copy(direction);
-            });
+                // Now reinitialize the app with our custom function
+                if (typeof init === 'function') {
+                    init();
+                }
+            }
         }
+        
+        // Check if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                isDOMReady = true;
+                checkAndInitialize();
+            });
+        } else {
+            isDOMReady = true;
+        }
+        
+        // Check when script.js is loaded
+        window.addEventListener('load', function() {
+            isScriptLoaded = true;
+            checkAndInitialize();
+        });
 
-        // Populate molecule list
-        function populateMoleculeList() {
-            const list = document.getElementById('moleculeList');
-            list.innerHTML = '';
+        // Chatbot Popup Functions
+        function openChatbotPopup() {
+            document.getElementById('chatbotPopup').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeChatbotPopup() {
+            document.getElementById('chatbotPopup').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        // Close popup when clicking outside of it
+        window.onclick = function(event) {
+            const popup = document.getElementById('chatbotPopup');
+            if (event.target === popup) {
+                closeChatbotPopup();
+            }
+        }
+        
+        // Handle Enter key in popup chat
+        function handlePopupEnterKey(event) {
+            if (event.key === 'Enter') {
+                sendPopupMessage();
+            }
+        }
+        
+        // Send message in popup
+        async function sendPopupMessage() {
+            const input = document.getElementById('popupChatInput');
+            const question = input.value.trim();
             
-            moleculeDatabase.forEach((molecule, index) => {
-                const item = document.createElement('li');
-                item.className = 'molecule-item';
-                item.innerHTML = `
-                    <div class="molecule-name">${molecule.name}</div>
-                    <div class="molecule-formula">${molecule.formula}</div>
-                `;
-                item.addEventListener('click', () => loadMolecule(index));
-                list.appendChild(item);
-            });
-        }
-
-        // Load and display a molecule
-        function loadMolecule(index) {
-            // Clear previous molecule
-            if (currentMolecule) {
-                scene.remove(currentMolecule);
+            if (!question) return;
+            
+            // Add user message to chat
+            addPopupMessage('You', question, 'user');
+            input.value = '';
+            
+            showPopupAILoading(true);
+            
+            try {
+                const currentMolecule = getCurrentMolecule();
+                const response = await fetch(`${AI_BASE_URL}/ask-ai`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        current_molecule: currentMolecule ? `${currentMolecule.name} (${currentMolecule.formula})` : 'None'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    addPopupMessage('AI Assistant', data.response, 'ai');
+                } else {
+                    addPopupMessage('AI Assistant', `Error: ${data.error}`, 'error');
+                }
+                
+            } catch (error) {
+                addPopupMessage('AI Assistant', 'Sorry, I couldn\'t connect to the AI service. Please make sure the Python backend is running.', 'error');
             }
             
-            // Update active state
-            document.querySelectorAll('.molecule-item').forEach((item, i) => {
-                item.classList.toggle('active', i === index);
-            });
-            
-            const molecule = moleculeDatabase[index];
-            currentMolecule = new THREE.Group();
-            
-            // Create atoms
-            molecule.atoms.forEach((atom, atomIndex) => {
-                const atomMesh = createAtom(atom.element, atom.position);
-                atomMesh.userData = { element: atom.element, index: atomIndex };
-                currentMolecule.add(atomMesh);
-            });
-            
-            // Create bonds
-            molecule.bonds.forEach(bond => {
-                const atom1 = molecule.atoms[bond[0]];
-                const atom2 = molecule.atoms[bond[1]];
-                const bondMesh = createBond(atom1.position, atom2.position);
-                currentMolecule.add(bondMesh);
-            });
-            
-            scene.add(currentMolecule);
-            updateInfoPanel(molecule);
+            showPopupAILoading(false);
         }
-
-        // Create atom mesh
-        function createAtom(element, position) {
-            const radius = displayMode === 'space-fill' ? atomRadii[element] : atomRadii[element] * 0.3;
-            const geometry = new THREE.SphereGeometry(radius, 32, 32);
-            const material = new THREE.MeshPhongMaterial({ color: atomColors[element] });
-            const mesh = new THREE.Mesh(geometry, material);
+        
+        // Add message to popup chat
+        function addPopupMessage(sender, message, type) {
+            const messagesContainer = document.getElementById('popupChatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
             
-            mesh.position.set(position[0], position[1], position[2]);
-            mesh.castShadow = true;
-            mesh.receiveShadow = true;
+            let senderColor = '#4a5d8a';
+            let senderIcon = '👤';
             
-            return mesh;
-        }
-
-        // Create bond mesh
-        function createBond(pos1, pos2) {
-            if (displayMode === 'space-fill') {
-                return new THREE.Group(); // No bonds in space-fill mode
+            if (type === 'ai') {
+                senderColor = '#667eea';
+                senderIcon = '🤖';
+            } else if (type === 'error') {
+                senderColor = '#dc3545';
+                senderIcon = '⚠️';
             }
             
-            const distance = Math.sqrt(
-                Math.pow(pos2[0] - pos1[0], 2) +
-                Math.pow(pos2[1] - pos1[1], 2) +
-                Math.pow(pos2[2] - pos1[2], 2)
-            );
+            messageDiv.innerHTML = `
+                <div class="chat-message-question" style="color: ${senderColor};">
+                    ${senderIcon} ${sender}
+                </div>
+                <div class="chat-message-answer">${message}</div>
+            `;
             
-            const geometry = new THREE.CylinderGeometry(0.1, 0.1, distance, 8);
-            const material = new THREE.MeshPhongMaterial({ color: 0x666666 });
-            const mesh = new THREE.Mesh(geometry, material);
-            
-            // Position bond between atoms
-            const midpoint = [
-                (pos1[0] + pos2[0]) / 2,
-                (pos1[1] + pos2[1]) / 2,
-                (pos1[2] + pos2[2]) / 2
-            ];
-            mesh.position.set(midpoint[0], midpoint[1], midpoint[2]);
-            
-            // Orient bond correctly
-            const direction = new THREE.Vector3(pos2[0] - pos1[0], pos2[1] - pos1[1], pos2[2] - pos1[2]);
-            const axis = new THREE.Vector3(0, 1, 0);
-            mesh.quaternion.setFromUnitVectors(axis, direction.normalize());
-            
-            return mesh;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-
-        // Update info panel
-        function updateInfoPanel(molecule) {
-            const title = document.getElementById('infoTitle');
-            const content = document.getElementById('infoContent');
-            
-            title.textContent = molecule.name;
-            content.innerHTML = `
-                <div class="info-section">
-                    <div class="info-label">Formula:</div>
-                    <div class="info-value">${molecule.formula}</div>
-                </div>
-                <div class="info-section">
-                    <div class="info-label">Description:</div>
-                    <div class="info-value">${molecule.info.description}</div>
-                </div>
-                <div class="info-section">
-                    <div class="info-label">Molecular Weight:</div>
-                    <div class="info-value">${molecule.info.molecularWeight}</div>
-                </div>
-                <div class="info-section">
-                    <div class="info-label">Bond Angle:</div>
-                    <div class="info-value">${molecule.info.bondAngle}</div>
-                </div>
-                <div class="info-section">
-                    <div class="info-label">Polarity:</div>
-                    <div class="info-value">${molecule.info.polarity}</div>
-                </div>
-                <div class="info-section">
-                    <div class="info-label">Uses:</div>
-                    <div class="info-value">${molecule.info.uses}</div>
+        
+        // Show/hide popup AI loading
+        function showPopupAILoading(show) {
+            document.getElementById('popupAiLoading').style.display = show ? 'block' : 'none';
+        }
+        
+        // Clear popup chat
+        function clearPopupChat() {
+            const messagesContainer = document.getElementById('popupChatMessages');
+            messagesContainer.innerHTML = `
+                <div style="text-align: center; color: #999; padding: 20px;">
+                    Welcome to the AI Chemistry Assistant! Ask me anything about molecules, chemistry, or use the quick action buttons above.
                 </div>
             `;
         }
+        
+        // Popup AI Functions
+        async function popupExplainCurrentMolecule() {
+            const molecule = getCurrentMolecule();
+            if (!molecule) {
+                addPopupMessage('System', 'Please select a molecule first!', 'error');
+                return;
+            }
+            
+            addPopupMessage('You', `Explain ${molecule.name}`, 'user');
+            showPopupAILoading(true);
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/explain-molecule`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule_name: molecule.name,
+                        molecule_formula: molecule.formula
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    addPopupMessage('AI Assistant', data.explanation, 'ai');
+                } else {
+                    addPopupMessage('AI Assistant', `Error: ${data.error}`, 'error');
+                }
+                
+            } catch (error) {
+                addPopupMessage('AI Assistant', 'Sorry, I couldn\'t connect to the AI service.', 'error');
+            }
+            
+            showPopupAILoading(false);
+        }
+        
+        async function popupCompareMolecules() {
+            const current = getCurrentMolecule();
+            if (!current) {
+                addPopupMessage('System', 'Please select a molecule first!', 'error');
+                return;
+            }
+            
+            const molecule2 = prompt(`Compare ${current.name} with which molecule?\n\nAvailable: Water, Methane, Ammonia, Carbon Dioxide, Ethanol, Benzene, and 20 more...`);
+            if (!molecule2) return;
+            
+            addPopupMessage('You', `Compare ${current.name} with ${molecule2}`, 'user');
+            showPopupAILoading(true);
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/compare-molecules`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule1: current.name,
+                        molecule2: molecule2
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    addPopupMessage('AI Assistant', data.comparison, 'ai');
+                } else {
+                    addPopupMessage('AI Assistant', `Error: ${data.error}`, 'error');
+                }
+                
+            } catch (error) {
+                addPopupMessage('AI Assistant', 'Sorry, I couldn\'t connect to the AI service.', 'error');
+            }
+            
+            showPopupAILoading(false);
+        }
+        
+        async function popupPredictProperties() {
+            const formula = prompt('Enter a molecular formula to predict its properties (e.g., H2O, CH4, NH3):');
+            if (!formula) return;
+            
+            addPopupMessage('You', `Predict properties of ${formula}`, 'user');
+            showPopupAILoading(true);
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/predict-properties`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        formula: formula
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    addPopupMessage('AI Assistant', data.predictions, 'ai');
+                } else {
+                    addPopupMessage('AI Assistant', `Error: ${data.error}`, 'error');
+                }
+                
+            } catch (error) {
+                addPopupMessage('AI Assistant', 'Sorry, I couldn\'t connect to the AI service.', 'error');
+            }
+            
+            showPopupAILoading(false);
+        }
 
-        // Set display mode
-        function setDisplayMode(mode) {
-            displayMode = mode;
+        // AI Integration Functions (keeping existing AI code)
+        const AI_BASE_URL = 'http://localhost:5000/api';
+        let currentMoleculeData = null;
+        
+        // Check AI service status on load
+        checkAIStatus();
+        
+        async function checkAIStatus() {
+            try {
+                const response = await fetch(`${AI_BASE_URL}/health`);
+                if (response.ok) {
+                    document.getElementById('aiStatus').textContent = '● Online';
+                    document.getElementById('aiStatus').style.color = '#22c55e';
+                } else {
+                    throw new Error('Service unavailable');
+                }
+            } catch (error) {
+                document.getElementById('aiStatus').textContent = '● Offline';
+                document.getElementById('aiStatus').style.color = '#ef4444';
+                console.warn('AI service is not available. Please start the Python backend.');
+            }
+        }
+        
+        // Handle Enter key in chat input
+        function handleEnterKey(event) {
+            if (event.key === 'Enter') {
+                askAI();
+            }
+        }
+        
+        // Ask AI a question
+        async function askAI() {
+            const input = document.getElementById('aiQuestionInput');
+            const question = input.value.trim();
             
-            // Update button states
-            document.querySelectorAll('.control-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+            if (!question) return;
             
-            // Reload current molecule with new display mode
+            showAILoading(true);
+            clearAIResponse();
+            
+            try {
+                const currentMolecule = getCurrentMolecule();
+                const response = await fetch(`${AI_BASE_URL}/ask-ai`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        current_molecule: currentMolecule ? `${currentMolecule.name} (${currentMolecule.formula})` : 'None'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAIResponse(data.response, question);
+                } else {
+                    showAIResponse(`Error: ${data.error}`, question);
+                }
+                
+            } catch (error) {
+                showAIResponse('Sorry, I couldn\'t connect to the AI service. Please make sure the Python backend is running.', question);
+            }
+            
+            showAILoading(false);
+            input.value = '';
+        }
+        
+        // Explain current molecule
+        async function explainCurrentMolecule() {
+            const molecule = getCurrentMolecule();
+            if (!molecule) {
+                alert('Please select a molecule first!');
+                return;
+            }
+            
+            showAILoading(true);
+            clearAIResponse();
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/explain-molecule`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule_name: molecule.name,
+                        molecule_formula: molecule.formula
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAIResponse(data.explanation, `Explain ${molecule.name}`);
+                } else {
+                    showAIResponse(`Error: ${data.error}`, `Explain ${molecule.name}`);
+                }
+                
+            } catch (error) {
+                showAIResponse('Sorry, I couldn\'t connect to the AI service.', `Explain ${molecule.name}`);
+            }
+            
+            showAILoading(false);
+        }
+        
+        // Compare molecules
+        async function compareMolecules() {
+            const current = getCurrentMolecule();
+            if (!current) {
+                alert('Please select a molecule first!');
+                return;
+            }
+            
+            const molecule2 = prompt(`Compare ${current.name} with which molecule?\\n\\nAvailable: Water, Methane, Ammonia, Carbon Dioxide, Ethanol, Benzene, and 20 more...`);
+            if (!molecule2) return;
+            
+            showAILoading(true);
+            clearAIResponse();
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/compare-molecules`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule1: current.name,
+                        molecule2: molecule2
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAIResponse(data.comparison, `Compare ${current.name} vs ${molecule2}`);
+                } else {
+                    showAIResponse(`Error: ${data.error}`, `Compare ${current.name} vs ${molecule2}`);
+                }
+                
+            } catch (error) {
+                showAIResponse('Sorry, I couldn\'t connect to the AI service.', `Compare ${current.name} vs ${molecule2}`);
+            }
+            
+            showAILoading(false);
+        }
+        
+        // Predict properties
+        async function predictProperties() {
+            const formula = prompt('Enter a molecular formula to predict its properties (e.g., H2O, CH4, NH3):');
+            if (!formula) return;
+            
+            showAILoading(true);
+            clearAIResponse();
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/predict-properties`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        formula: formula
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAIResponse(data.predictions, `Predict properties of ${formula}`);
+                } else {
+                    showAIResponse(`Error: ${data.error}`, `Predict properties of ${formula}`);
+                }
+                
+            } catch (error) {
+                showAIResponse('Sorry, I couldn\'t connect to the AI service.', `Predict properties of ${formula}`);
+            }
+            
+            showAILoading(false);
+        }
+        
+        // Utility functions
+        function getCurrentMolecule() {
             const activeIndex = Array.from(document.querySelectorAll('.molecule-item')).findIndex(item => item.classList.contains('active'));
-            if (activeIndex !== -1) {
-                loadMolecule(activeIndex);
+            return activeIndex !== -1 ? moleculeDatabase[activeIndex] : null;
+        }
+        
+        function showAIResponse(response, question) {
+            const responseDiv = document.getElementById('aiResponse');
+            const contentDiv = document.getElementById('aiResponseContent');
+            
+            contentDiv.innerHTML = `
+                <div style="font-weight: bold; color: #4a5d8a; margin-bottom: 8px;">Q: ${question}</div>
+                <div style="white-space: pre-wrap;">${response}</div>
+            `;
+            
+            responseDiv.style.display = 'block';
+        }
+        
+        function clearAIResponse() {
+            document.getElementById('aiResponse').style.display = 'none';
+        }
+        
+        function showAILoading(show) {
+            document.getElementById('aiLoading').style.display = show ? 'block' : 'none';
+        }
+        
+        // PDF Generation Functions
+        async function previewPDF() {
+            const molecule = getCurrentMolecule();
+            if (!molecule) {
+                alert('Please select a molecule first!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${AI_BASE_URL}/preview-pdf`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule_name: molecule.name,
+                        molecule_formula: molecule.formula,
+                        molecule_info: molecule.info
+                    })
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    window.open(url, '_blank');
+                } else {
+                    alert('Error generating PDF preview. Please try again.');
+                }
+                
+            } catch (error) {
+                alert('Could not generate PDF preview. Please make sure the server is running.');
             }
         }
-
-        // Toggle auto rotation
-        function toggleRotation() {
-            autoRotate = !autoRotate;
-            event.target.textContent = autoRotate ? 'Stop Rotation' : 'Auto Rotate';
-        }
-
-        // Reset camera
-        function resetCamera() {
-            camera.position.set(20, 20, 20);
-            camera.lookAt(0, 0, 0);
-            cameraDistance = 50;
-        }
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            if (autoRotate && currentMolecule) {
-                currentMolecule.rotation.y += 0.01;
+        
+        async function downloadPDF() {
+            const molecule = getCurrentMolecule();
+            if (!molecule) {
+                alert('Please select a molecule first!');
+                return;
             }
             
-            renderer.render(scene, camera);
+            try {
+                const response = await fetch(`${AI_BASE_URL}/generate-pdf`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        molecule_name: molecule.name,
+                        molecule_formula: molecule.formula,
+                        molecule_info: molecule.info
+                    })
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${molecule.name.replace(/\s+/g, '_')}_report.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    alert('Error generating PDF. Please try again.');
+                }
+                
+            } catch (error) {
+                alert('Could not download PDF. Please make sure the server is running.');
+            }
         }
-
-        // Handle window resize
-        function onWindowResize() {
-            const container = document.getElementById('viewer');
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        }
-
-        // Start the application
-        init();
     </script>
 </body>
 </html>
