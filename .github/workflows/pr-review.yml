@@ -11,7 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4.0.0
         with:
@@ -21,3 +20,11 @@ jobs:
           user_name: 'github-actions'
           user_email: 'github-actions@github.com'
 
+      - name: Comment PR with preview link
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ✅ PR preview is deployed!  
+            [View preview here](https://ParthepB.github.io/MolecuViz/pr-${{ github.event.pull_request.number }}/display.html)
