@@ -1,5 +1,5 @@
 
-import { oxygenMolecule } from './Diatomic/oxygen.js';
+import { oxygenMolecule as molecule } from './Diatomic/oxygen.js';
 
 let scene, camera, renderer;
 let currentMolecule = null;
@@ -37,7 +37,7 @@ function init() {
   scene.add(directional);
 
   // Load molecule
-  loadMolecule(oxygenMolecule);
+  loadMolecule(molecule);
 
   animate();
 }
