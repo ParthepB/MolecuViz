@@ -1,0 +1,32 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Build (optional)
+      run: |
+        echo "Static site, no build needed"
+        # If you later add a build step (like bundling), do it here
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v5
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./MoleculeVisuals
+        destination_dir: pr-${{ github.event.number }}
+        user_name: 'github-actions'
+        user_email: 'github-actions@github.com'
