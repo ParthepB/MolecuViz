@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Molecule Visuals Test</title>
+</head>
+<body>
+  <h1>Molecule Visuals Test</h1>
+  <div id="output"></div>
+
+  <script type="module">
+    import { hydrogenMolecule } from './Diatomic/hydrogen.js';
+
+    const output = document.getElementById('output');
+    output.innerHTML = `
+      <h2>${hydrogenMolecule.name} (${hydrogenMolecule.formula})</h2>
+      <p>${hydrogenMolecule.info.description}</p>
+      <p><strong>Molecular Weight:</strong> ${hydrogenMolecule.info.molecularWeight}</p>
+      <p><strong>Bond Length:</strong> ${hydrogenMolecule.info.bondLength}</p>
+    `;
+
+    console.log("Loaded molecule:", hydrogenMolecule);
+  </script>
+</body>
+</html>
