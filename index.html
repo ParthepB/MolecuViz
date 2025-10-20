@@ -41,7 +41,7 @@
                         <span>Oxygen</span>
                     </div>
                     <div class="atom-color">
-                        <div class="color-dot" style="background-color: #ffffff;"></div>
+                        <div class="color-dot" style="background-color: #ffffff; border: 1px solid #ccc;"></div>
                         <span>Hydrogen</span>
                     </div>
                     <div class="atom-color">
@@ -59,6 +59,14 @@
                     <div class="atom-color">
                         <div class="color-dot" style="background-color: #ffa500;"></div>
                         <span>Phosphorus</span>
+                    </div>
+                    <div class="atom-color">
+                        <div class="color-dot" style="background-color: #00ff00;"></div>
+                        <span>Fluorine</span>
+                    </div>
+                    <div class="atom-color">
+                        <div class="color-dot" style="background-color: #00ffff;"></div>
+                        <span>Chlorine</span>
                     </div>
                 </div>
             </div>
@@ -94,6 +102,21 @@
                         <button class="control-button" onclick="previewPDF()" style="margin-right: 5px; font-size: 0.8em; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">Preview PDF</button>
                         <button class="control-button" onclick="downloadPDF()" style="font-size: 0.8em; background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);">Download PDF</button>
                     </div>
+                    
+                    <!-- 3D Model Export (OBJ / STL) -->
+                    <div class="export-controls" style="margin-bottom: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <h5 style="color: #4a5d8a; margin: 0 0 10px 0;">🔩 3D Print Export</h5>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <label style="font-size:0.9em; color:#666; margin-right:6px;">Scale:</label>
+                            <input id="exportScale" type="number" value="1" step="0.1" min="0.1" style="width:70px; padding:4px; border-radius:4px; border:1px solid #ddd;">
+                            <button class="control-button" onclick="exportToOBJ()" style="margin-left:8px; font-size:0.8em;">Export .obj</button>
+                            <button class="control-button" onclick="exportToSTL()" style="font-size:0.8em;">Export .stl</button>
+                        </div>
+                        <div style="margin-top:8px; font-size:0.85em; color:#888;">
+                            Tip: increase scale to convert Angstrom units to mm for printing. Check your slicer for final sizing.
+                        </div>
+                    </div>
+                    <!-- end export-controls -->
                     
                     <div class="ai-chat">
                         <div class="chat-input-container" style="position: relative;">
@@ -157,6 +180,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- three.js exporters (non-module examples) -->
+    <script src="https://threejs.org/examples/js/exporters/OBJExporter.js"></script>
+    <script src="https://threejs.org/examples/js/exporters/STLExporter.js"></script>
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
 </body>

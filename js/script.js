@@ -17,9 +17,9 @@ const atomColors = {
     'S': 0xffff00, // Yellow
     'P': 0xffa500, // Orange
     'F': 0x00ff00, // Green
-    'Cl': 0x00ff00, // Green
+    'Cl': 0x00ffff, // Cyan
     'Br': 0x8b4513, // Brown
-    'I': 0x9400d3   // Purple
+    'I': 0x800080   // Purple
 };
 
 // Van der Waals radii
@@ -562,8 +562,528 @@ const moleculeDatabase = [
             polarity: "Polar",
             uses: "Energy source, food industry, medical applications"
         }
+    },
+    // Additional Simple Molecules
+    {
+        name: "Carbon Monoxide",
+        formula: "CO",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'O', position: [1.13, 0, 0] }
+        ],
+        bonds: [[0, 1]],
+        info: {
+            description: "Carbon monoxide is a toxic gas produced by incomplete combustion.",
+            molecularWeight: "28.010 g/mol",
+            bondAngle: "Linear",
+            polarity: "Polar",
+            uses: "Metal refining, fuel gas, chemical synthesis"
+        }
+    },
+    {
+        name: "Nitric Oxide",
+        formula: "NO",
+        atoms: [
+            { element: 'N', position: [0, 0, 0] },
+            { element: 'O', position: [1.15, 0, 0] }
+        ],
+        bonds: [[0, 1]],
+        info: {
+            description: "Nitric oxide is a radical molecule important in biological signaling.",
+            molecularWeight: "30.006 g/mol",
+            bondAngle: "Linear",
+            polarity: "Polar",
+            uses: "Biological signaling, medical treatments, chemical synthesis"
+        }
+    },
+    // Additional Alcohols
+    {
+        name: "Isopropanol",
+        formula: "C₃H₈O",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'C', position: [3.08, 0, 0] },
+            { element: 'O', position: [1.54, 1.43, 0] },
+            { element: 'H', position: [2.37, 1.43, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [1.54, -1.03, 0] },
+            { element: 'H', position: [3.44, 1.03, 0] },
+            { element: 'H', position: [3.44, -0.51, 0.89] },
+            { element: 'H', position: [3.44, -0.51, -0.89] }
+        ],
+        bonds: [[0, 1], [1, 2], [1, 3], [3, 4], [0, 5], [0, 6], [0, 7], [1, 8], [2, 9], [2, 10], [2, 11]],
+        info: {
+            description: "Isopropanol (rubbing alcohol) is a common antiseptic and solvent.",
+            molecularWeight: "60.096 g/mol",
+            bondAngle: "Various",
+            polarity: "Polar",
+            uses: "Antiseptic, solvent, cleaning agent"
+        }
+    },
+    {
+        name: "Phenol",
+        formula: "C₆H₅OH",
+        atoms: [
+            { element: 'C', position: [1.4, 0, 0] },
+            { element: 'C', position: [0.7, 1.21, 0] },
+            { element: 'C', position: [-0.7, 1.21, 0] },
+            { element: 'C', position: [-1.4, 0, 0] },
+            { element: 'C', position: [-0.7, -1.21, 0] },
+            { element: 'C', position: [0.7, -1.21, 0] },
+            { element: 'O', position: [2.8, 0, 0] },
+            { element: 'H', position: [3.74, 0, 0] },
+            { element: 'H', position: [1.24, 2.15, 0] },
+            { element: 'H', position: [-1.24, 2.15, 0] },
+            { element: 'H', position: [-2.48, 0, 0] },
+            { element: 'H', position: [-1.24, -2.15, 0] },
+            { element: 'H', position: [1.24, -2.15, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 6], [6, 7], [1, 8], [2, 9], [3, 10], [4, 11], [5, 12]],
+        info: {
+            description: "Phenol is an aromatic alcohol with antiseptic properties.",
+            molecularWeight: "94.111 g/mol",
+            bondAngle: "120° (aromatic)",
+            polarity: "Polar",
+            uses: "Antiseptic, plastics production, pharmaceuticals"
+        }
+    },
+    // Additional Aromatics
+    {
+        name: "Naphthalene",
+        formula: "C₁₀H₈",
+        atoms: [
+            { element: 'C', position: [1.4, 0, 0] },
+            { element: 'C', position: [0.7, 1.21, 0] },
+            { element: 'C', position: [-0.7, 1.21, 0] },
+            { element: 'C', position: [-1.4, 0, 0] },
+            { element: 'C', position: [-0.7, -1.21, 0] },
+            { element: 'C', position: [0.7, -1.21, 0] },
+            { element: 'C', position: [2.8, 0, 0] },
+            { element: 'C', position: [3.5, 1.21, 0] },
+            { element: 'C', position: [2.8, 2.42, 0] },
+            { element: 'C', position: [1.4, 2.42, 0] },
+            { element: 'H', position: [-2.48, 0, 0] },
+            { element: 'H', position: [-1.24, -2.15, 0] },
+            { element: 'H', position: [1.24, -2.15, 0] },
+            { element: 'H', position: [3.88, 0, 0] },
+            { element: 'H', position: [4.58, 1.21, 0] },
+            { element: 'H', position: [3.36, 3.36, 0] },
+            { element: 'H', position: [0.84, 3.36, 0] },
+            { element: 'H', position: [-1.24, 2.15, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 6], [6, 7], [7, 8], [8, 9], [9, 1], [1, 9], [6, 7], [3, 10], [4, 11], [5, 12], [6, 13], [7, 14], [8, 15], [9, 16], [2, 17]],
+        info: {
+            description: "Naphthalene consists of two fused benzene rings, commonly found in mothballs.",
+            molecularWeight: "128.174 g/mol",
+            bondAngle: "120°",
+            polarity: "Nonpolar",
+            uses: "Mothballs, chemical synthesis, dyes"
+        }
+    },
+    // Additional Alkanes
+    {
+        name: "Butane",
+        formula: "C₄H₁₀",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'C', position: [3.08, 0, 0] },
+            { element: 'C', position: [4.62, 0, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [1.54, 1.03, 0] },
+            { element: 'H', position: [1.54, -1.03, 0] },
+            { element: 'H', position: [3.08, 1.03, 0] },
+            { element: 'H', position: [3.08, -1.03, 0] },
+            { element: 'H', position: [4.98, 1.03, 0] },
+            { element: 'H', position: [4.98, -0.51, 0.89] },
+            { element: 'H', position: [4.98, -0.51, -0.89] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [0, 4], [0, 5], [0, 6], [1, 7], [1, 8], [2, 9], [2, 10], [3, 11], [3, 12], [3, 13]],
+        info: {
+            description: "Butane is a four-carbon alkane commonly used as lighter fuel.",
+            molecularWeight: "58.124 g/mol",
+            bondAngle: "109.5°",
+            polarity: "Nonpolar",
+            uses: "Lighter fuel, refrigerant, aerosol propellant"
+        }
+    },
+    {
+        name: "Cyclohexane",
+        formula: "C₆H₁₂",
+        atoms: [
+            { element: 'C', position: [1.4, 0, 0.5] },
+            { element: 'C', position: [0.7, 1.21, -0.5] },
+            { element: 'C', position: [-0.7, 1.21, 0.5] },
+            { element: 'C', position: [-1.4, 0, -0.5] },
+            { element: 'C', position: [-0.7, -1.21, 0.5] },
+            { element: 'C', position: [0.7, -1.21, -0.5] },
+            { element: 'H', position: [2.48, 0, 0.5] },
+            { element: 'H', position: [1.4, 0, 1.6] },
+            { element: 'H', position: [1.24, 2.15, -0.5] },
+            { element: 'H', position: [0.7, 1.21, -1.6] },
+            { element: 'H', position: [-1.24, 2.15, 0.5] },
+            { element: 'H', position: [-0.7, 1.21, 1.6] },
+            { element: 'H', position: [-2.48, 0, -0.5] },
+            { element: 'H', position: [-1.4, 0, -1.6] },
+            { element: 'H', position: [-1.24, -2.15, 0.5] },
+            { element: 'H', position: [-0.7, -1.21, 1.6] },
+            { element: 'H', position: [1.24, -2.15, -0.5] },
+            { element: 'H', position: [0.7, -1.21, -1.6] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 6], [0, 7], [1, 8], [1, 9], [2, 10], [2, 11], [3, 12], [3, 13], [4, 14], [4, 15], [5, 16], [5, 17]],
+        info: {
+            description: "Cyclohexane is a six-membered carbon ring in chair conformation.",
+            molecularWeight: "84.162 g/mol",
+            bondAngle: "109.5°",
+            polarity: "Nonpolar",
+            uses: "Solvent, nylon production, chemical synthesis"
+        }
+    },
+    // Additional Alkenes & Alkynes
+    {
+        name: "Propene",
+        formula: "C₃H₆",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.34, 0, 0] },
+            { element: 'C', position: [2.88, 0, 0] },
+            { element: 'H', position: [-0.50, 0.87, 0] },
+            { element: 'H', position: [-0.50, -0.87, 0] },
+            { element: 'H', position: [1.84, 0.87, 0] },
+            { element: 'H', position: [3.24, 1.03, 0] },
+            { element: 'H', position: [3.24, -0.51, 0.89] },
+            { element: 'H', position: [3.24, -0.51, -0.89] }
+        ],
+        bonds: [[0, 1], [1, 2], [0, 3], [0, 4], [1, 5], [2, 6], [2, 7], [2, 8]],
+        info: {
+            description: "Propene is a three-carbon alkene used in polymer production.",
+            molecularWeight: "42.081 g/mol",
+            bondAngle: "120° at C=C",
+            polarity: "Nonpolar",
+            uses: "Polypropylene production, chemical synthesis"
+        }
+    },
+    {
+        name: "Acetylene",
+        formula: "C₂H₂",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.20, 0, 0] },
+            { element: 'H', position: [-1.06, 0, 0] },
+            { element: 'H', position: [2.26, 0, 0] }
+        ],
+        bonds: [[0, 1], [0, 2], [1, 3]],
+        info: {
+            description: "Acetylene is the simplest alkyne with a carbon-carbon triple bond.",
+            molecularWeight: "26.038 g/mol",
+            bondAngle: "180°",
+            polarity: "Nonpolar",
+            uses: "Welding gas, chemical synthesis, lighting"
+        }
+    },
+    // Additional Acids
+    {
+        name: "Propionic Acid",
+        formula: "C₃H₆O₂",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'C', position: [3.08, 0, 0] },
+            { element: 'O', position: [3.62, 1.21, 0] },
+            { element: 'O', position: [3.62, -1.21, 0] },
+            { element: 'H', position: [4.46, -1.65, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [1.54, 1.03, 0] },
+            { element: 'H', position: [1.54, -1.03, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [2, 4], [4, 5], [0, 6], [0, 7], [0, 8], [1, 9], [1, 10]],
+        info: {
+            description: "Propionic acid is a three-carbon carboxylic acid used as a food preservative.",
+            molecularWeight: "74.079 g/mol",
+            bondAngle: "Various",
+            polarity: "Polar",
+            uses: "Food preservative, chemical synthesis, herbicides"
+        }
+    },
+    // Esters
+    {
+        name: "Ethyl Acetate",
+        formula: "C₄H₈O₂",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'O', position: [2.08, 1.21, 0] },
+            { element: 'O', position: [2.08, -1.21, 0] },
+            { element: 'C', position: [3.62, -1.21, 0] },
+            { element: 'C', position: [5.16, -1.21, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [3.98, -0.18, 0] },
+            { element: 'H', position: [3.98, -2.24, 0] },
+            { element: 'H', position: [5.52, -0.18, 0] },
+            { element: 'H', position: [5.52, -1.72, 0.89] },
+            { element: 'H', position: [5.52, -1.72, -0.89] }
+        ],
+        bonds: [[0, 1], [1, 2], [1, 3], [3, 4], [4, 5], [0, 6], [0, 7], [0, 8], [4, 9], [4, 10], [5, 11], [5, 12], [5, 13]],
+        info: {
+            description: "Ethyl acetate is a common ester used as a solvent in nail polish remover.",
+            molecularWeight: "88.106 g/mol",
+            bondAngle: "Various",
+            polarity: "Polar",
+            uses: "Solvent, nail polish remover, food flavoring"
+        }
+    },
+    // Additional Ketones
+    {
+        name: "Acetaldehyde",
+        formula: "C₂H₄O",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'O', position: [2.75, 0, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [1.54, -1.06, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [0, 3], [0, 4], [0, 5], [1, 6]],
+        info: {
+            description: "Acetaldehyde is produced during alcohol metabolism and has a pungent smell.",
+            molecularWeight: "44.053 g/mol",
+            bondAngle: "120° at C=O",
+            polarity: "Polar",
+            uses: "Chemical synthesis, flavoring, preservative"
+        }
+    },
+    // Ethers
+    {
+        name: "Diethyl Ether",
+        formula: "C₄H₁₀O",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'O', position: [3.08, 0, 0] },
+            { element: 'C', position: [4.62, 0, 0] },
+            { element: 'C', position: [6.16, 0, 0] },
+            { element: 'H', position: [-0.36, 1.03, 0] },
+            { element: 'H', position: [-0.36, -0.51, 0.89] },
+            { element: 'H', position: [-0.36, -0.51, -0.89] },
+            { element: 'H', position: [1.54, 1.03, 0] },
+            { element: 'H', position: [1.54, -1.03, 0] },
+            { element: 'H', position: [4.62, 1.03, 0] },
+            { element: 'H', position: [4.62, -1.03, 0] },
+            { element: 'H', position: [6.52, 1.03, 0] },
+            { element: 'H', position: [6.52, -0.51, 0.89] },
+            { element: 'H', position: [6.52, -0.51, -0.89] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [0, 6], [0, 7], [1, 8], [1, 9], [3, 10], [3, 11], [4, 12], [4, 13], [4, 14]],
+        info: {
+            description: "Diethyl ether was historically used as an anesthetic and is a common solvent.",
+            molecularWeight: "74.123 g/mol",
+            bondAngle: "104° at oxygen",
+            polarity: "Slightly polar",
+            uses: "Solvent, extraction, former anesthetic"
+        }
+    },
+    // Additional Nitrogen Compounds
+    {
+        name: "Dimethylamine",
+        formula: "C₂H₇N",
+        atoms: [
+            { element: 'N', position: [0, 0, 0] },
+            { element: 'C', position: [1.47, 0, 0] },
+            { element: 'C', position: [-0.74, 1.28, 0] },
+            { element: 'H', position: [0, -1.01, 0] },
+            { element: 'H', position: [1.83, 1.03, 0] },
+            { element: 'H', position: [1.83, -0.51, 0.89] },
+            { element: 'H', position: [1.83, -0.51, -0.89] },
+            { element: 'H', position: [-1.10, 1.79, 0.89] },
+            { element: 'H', position: [-1.10, 1.79, -0.89] },
+            { element: 'H', position: [-0.38, 2.31, 0] }
+        ],
+        bonds: [[0, 1], [0, 2], [0, 3], [1, 4], [1, 5], [1, 6], [2, 7], [2, 8], [2, 9]],
+        info: {
+            description: "Dimethylamine is a secondary amine with a fishy odor.",
+            molecularWeight: "45.085 g/mol",
+            bondAngle: "107° at N",
+            polarity: "Polar",
+            uses: "Chemical synthesis, pharmaceuticals, agriculture"
+        }
+    },
+    {
+        name: "Pyridine",
+        formula: "C₅H₅N",
+        atoms: [
+            { element: 'C', position: [1.4, 0, 0] },
+            { element: 'C', position: [0.43, 1.32, 0] },
+            { element: 'C', position: [-1.0, 1.32, 0] },
+            { element: 'N', position: [-1.83, 0, 0] },
+            { element: 'C', position: [-1.0, -1.32, 0] },
+            { element: 'C', position: [0.43, -1.32, 0] },
+            { element: 'H', position: [2.48, 0, 0] },
+            { element: 'H', position: [0.79, 2.35, 0] },
+            { element: 'H', position: [-1.56, 2.35, 0] },
+            { element: 'H', position: [-1.56, -2.35, 0] },
+            { element: 'H', position: [0.79, -2.35, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 6], [1, 7], [2, 8], [4, 9], [5, 10]],
+        info: {
+            description: "Pyridine is an aromatic nitrogen heterocycle used as a solvent and base.",
+            molecularWeight: "79.101 g/mol",
+            bondAngle: "120°",
+            polarity: "Polar",
+            uses: "Solvent, chemical synthesis, pharmaceuticals"
+        }
+    },
+    // Halogen Compounds
+    {
+        name: "Chloroform",
+        formula: "CHCl₃",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'Cl', position: [1.77, 0, 0] },
+            { element: 'Cl', position: [-0.59, 1.67, 0] },
+            { element: 'Cl', position: [-0.59, -0.83, 1.45] },
+            { element: 'H', position: [-0.59, -0.83, -1.45] }
+        ],
+        bonds: [[0, 1], [0, 2], [0, 3], [0, 4]],
+        info: {
+            description: "Chloroform was formerly used as an anesthetic but is now known to be toxic.",
+            molecularWeight: "119.378 g/mol",
+            bondAngle: "109.5°",
+            polarity: "Polar",
+            uses: "Solvent, refrigerant production, chemical synthesis"
+        }
+    },
+    // Additional Biological Molecules
+    {
+        name: "Fructose",
+        formula: "C₆H₁₂O₆",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'C', position: [1.54, 0, 0] },
+            { element: 'C', position: [2.31, 1.21, 0] },
+            { element: 'C', position: [1.54, 2.42, 0] },
+            { element: 'C', position: [0, 2.42, 0] },
+            { element: 'C', position: [-0.77, 1.21, 0] },
+            { element: 'O', position: [0, -1.21, 0] },
+            { element: 'O', position: [2.31, -1.21, 0] },
+            { element: 'O', position: [3.77, 1.21, 0] },
+            { element: 'O', position: [2.31, 3.63, 0] },
+            { element: 'O', position: [-0.77, 3.63, 0] },
+            { element: 'O', position: [-2.23, 1.21, 0] },
+            { element: 'H', position: [0.94, -1.65, 0] },
+            { element: 'H', position: [3.25, -1.65, 0] },
+            { element: 'H', position: [4.71, 1.65, 0] },
+            { element: 'H', position: [3.25, 4.07, 0] },
+            { element: 'H', position: [-1.71, 4.07, 0] },
+            { element: 'H', position: [-3.17, 1.65, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [0, 6], [1, 7], [2, 8], [3, 9], [4, 10], [5, 11], [6, 12], [7, 13], [8, 14], [9, 15], [10, 16], [11, 17]],
+        info: {
+            description: "Fructose is a simple sugar found in fruits and honey.",
+            molecularWeight: "180.156 g/mol",
+            bondAngle: "Various",
+            polarity: "Polar",
+            uses: "Sweetener, food industry, energy source"
+        }
+    },
+    {
+        name: "Caffeine",
+        formula: "C₈H₁₀N₄O₂",
+        atoms: [
+            { element: 'C', position: [0, 0, 0] },
+            { element: 'N', position: [1.35, 0, 0] },
+            { element: 'C', position: [2.03, 1.17, 0] },
+            { element: 'N', position: [1.35, 2.34, 0] },
+            { element: 'C', position: [0, 2.34, 0] },
+            { element: 'C', position: [-0.68, 1.17, 0] },
+            { element: 'N', position: [-2.03, 1.17, 0] },
+            { element: 'C', position: [-2.71, 0, 0] },
+            { element: 'N', position: [-2.03, -1.17, 0] },
+            { element: 'C', position: [-0.68, -1.17, 0] },
+            { element: 'O', position: [3.38, 1.17, 0] },
+            { element: 'O', position: [-0.68, 3.51, 0] },
+            { element: 'C', position: [2.03, 3.51, 0] },
+            { element: 'C', position: [-2.71, 2.34, 0] },
+            { element: 'C', position: [-2.71, -2.34, 0] },
+            { element: 'H', position: [-3.79, 0, 0] },
+            { element: 'H', position: [-1.76, -1.17, 0] },
+            { element: 'H', position: [2.71, 4.34, 0] },
+            { element: 'H', position: [1.35, 4.34, 0] },
+            { element: 'H', position: [2.71, 2.68, 0] },
+            { element: 'H', position: [-3.79, 2.34, 0] },
+            { element: 'H', position: [-2.03, 3.17, 0] },
+            { element: 'H', position: [-2.03, 1.51, 0] },
+            { element: 'H', position: [-3.79, -2.34, 0] },
+            { element: 'H', position: [-2.03, -3.17, 0] },
+            { element: 'H', position: [-2.03, -1.51, 0] }
+        ],
+        bonds: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [5, 6], [6, 7], [7, 8], [8, 9], [9, 0], [2, 10], [4, 11], [3, 12], [6, 13], [8, 14], [7, 15], [9, 16], [12, 17], [12, 18], [12, 19], [13, 20], [13, 21], [13, 22], [14, 23], [14, 24], [14, 25]],
+        info: {
+            description: "Caffeine is a stimulant alkaloid found in coffee, tea, and other plants.",
+            molecularWeight: "194.194 g/mol",
+            bondAngle: "Various",
+            polarity: "Polar",
+            uses: "Stimulant, beverages, pharmaceuticals"
+        }
     }
 ];
+
+// Molecule categorization
+const moleculeCategories = {
+    "Simple Molecules": [
+        "Water", "Methane", "Ammonia", "Carbon Dioxide", "Hydrogen Gas", 
+        "Oxygen Gas", "Nitrogen Gas", "Hydrogen Chloride", "Carbon Monoxide", "Nitric Oxide"
+    ],
+    "Alcohols & Phenols": [
+        "Ethanol", "Methanol", "Isopropanol", "Phenol"
+    ],
+    "Aromatics": [
+        "Benzene", "Toluene", "Naphthalene"
+    ],
+    "Alkanes": [
+        "Ethane", "Propane", "Butane", "Cyclohexane"
+    ],
+    "Alkenes & Alkynes": [
+        "Ethylene", "Propene", "Acetylene"
+    ],
+    "Carboxylic Acids": [
+        "Acetic Acid", "Formic Acid", "Propionic Acid"
+    ],
+    "Esters": [
+        "Ethyl Acetate"
+    ],
+    "Ketones & Aldehydes": [
+        "Acetone", "Formaldehyde", "Acetaldehyde"
+    ],
+    "Ethers": [
+        "Diethyl Ether"
+    ],
+    "Nitrogen Compounds": [
+        "Methylamine", "Dimethylamine", "Pyridine"
+    ],
+    "Sulfur Compounds": [
+        "Hydrogen Sulfide", "Sulfur Dioxide"
+    ],
+    "Phosphorus Compounds": [
+        "Phosphine"
+    ],
+    "Halogen Compounds": [
+        "Hydrogen Fluoride", "Methyl Fluoride", "Chloroform"
+    ],
+    "Biological Molecules": [
+        "Glucose", "Fructose", "Caffeine"
+    ]
+};
 
 // Initialize the application
 function init() {
@@ -749,6 +1269,7 @@ function createBond(pos1, pos2) {
         Math.pow(pos2[0] - pos1[0], 2) +
         Math.pow(pos2[1] - pos1[1], 2) +
         Math.pow(pos2[2] - pos1[2], 2)
+   
     );
     
     let bondRadius, material;
@@ -867,9 +1388,78 @@ function onWindowResize() {
     renderer.setSize(container.clientWidth, container.clientHeight);
 }
 
+// Function to populate molecule categories
+function populateMoleculeCategories() {
+    const container = document.getElementById('moleculeCategories');
+    container.innerHTML = '';
+    
+    Object.keys(moleculeCategories).forEach(categoryName => {
+        // Create category header
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header';
+        categoryHeader.innerHTML = `
+            ${categoryName}
+            <span class="category-icon">▼</span>
+        `;
+        
+        // Create category content
+        const categoryContent = document.createElement('div');
+        categoryContent.className = 'category-content';
+        
+        const moleculeList = document.createElement('ul');
+        moleculeList.className = 'molecule-list';
+        
+        // Add molecules to this category
+        moleculeCategories[categoryName].forEach(moleculeName => {
+            const molecule = moleculeDatabase.find(mol => mol.name === moleculeName);
+            if (molecule) {
+                const listItem = document.createElement('li');
+                listItem.className = 'molecule-item';
+                listItem.innerHTML = `
+                    <div class="molecule-name">${molecule.name}</div>
+                    <div class="molecule-formula">${molecule.formula}</div>
+                `;
+                listItem.addEventListener('click', () => selectMolecule(molecule));
+                moleculeList.appendChild(listItem);
+            }
+        });
+        
+        categoryContent.appendChild(moleculeList);
+        
+        // Add click handler for category toggle
+        categoryHeader.addEventListener('click', () => {
+            categoryHeader.classList.toggle('collapsed');
+            categoryContent.classList.toggle('collapsed');
+        });
+        
+        container.appendChild(categoryHeader);
+        container.appendChild(categoryContent);
+    });
+}
+
 // Start the application when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
+
+// Update the element color mapping to include all elements
+const elementColors = {
+    'H': 0xffffff,   // White
+    'C': 0x404040,   // Dark gray
+    'N': 0x0000ff,   // Blue
+    'O': 0xff0000,   // Red
+    'S': 0xffff00,   // Yellow
+    'P': 0xffa500,   // Orange
+    'F': 0x00ff00,   // Green
+    'Cl': 0x00ffff,  // Cyan
+    'Br': 0x8b4513,  // Brown
+    'I': 0x800080    // Purple
+};
+
+// Make sure this runs when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    populateMoleculeCategories();
+    // ... rest of initialization code
+});
