@@ -1,5 +1,5 @@
 
-import { oxygenMolecule as molecule } from './Diatomic/oxygen.js';
+import { nitrogenMolecule as molecule } from './Diatomic/nitrogen.js';
 
 let scene, camera, renderer;
 let currentMolecule = null;
