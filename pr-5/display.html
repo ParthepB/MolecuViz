@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Single Molecule Viewer</title>
+  <style>
+    body { margin: 0; background: #000; color: #fff; }
+    #viewer { width: 100vw; height: 80vh; display: block; }
+    #info { padding: 10px; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+</head>
+<body>
+  <canvas id="viewer"></canvas>
+  
+  <div id="info">
+    <h2 id="infoTitle"></h2>
+    <p id="infoContent"></p>
+  </div>
+
+  <script type="module" src="./display.js"></script>
+</body>
+</html>
